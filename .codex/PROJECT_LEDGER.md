@@ -719,3 +719,10 @@ Use `$maintain-project-ledger`. Read `.codex/PROJECT_LEDGER.md`, starting with `
 - Reinitialize main with the published snapshot plus this ledger correction, using verified GitHub account SafwanKamal (63901799+SafwanKamal@users.noreply.github.com). Preserve old history on local backup branch codex/pre-attribution-reset; do not push that branch.
 - Publish replacement using an explicit force-with-lease against observed remote 7f48e6afdf08153f1bc3ce830bd0fb41f820eaf2. Preserve all concurrent uncommitted competition/UI work. Application code is unchanged by this correction; no application tests required or run.
 - Next: verify remote main matches the new root commit. GitHub contributor statistics may require cache refresh. Historical commit references above refer to the local backup history.
+
+
+### Republish after repository recreation — 2026-09-13T08:56:33-05:00
+
+- User deleted/recreated FormChain after seeing stale contributor attribution. Verified the recreated public repository existed with no refs. Pushed only clean `main` at `9979a6005f6bf417fef9531800013030c29fdebf`; no old branches or tags pushed.
+- GitHub API verified one published snapshot commit attributed to SafwanKamal, contributors list containing only SafwanKamal, and only remote branch main. Local concurrent competition/UI work remains uncommitted and preserved.
+- This documentation follow-up uses the same verified SafwanKamal identity. No application code changed or tests run. Next: continue current implementation against canonical FormChain origin. Session ID/link unavailable from current surface.
