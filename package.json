@@ -1,0 +1,58 @@
+{
+  "name": "formchain",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "tsx --test tests/*.test.ts",
+    "seed:demo-users": "tsx scripts/seed-demo-users.ts",
+    "test:devnet": "RUN_SOLANA_DEVNET=1 tsx scripts/verify-devnet-proof.ts",
+    "test:rewards-api": "RUN_REWARD_API=1 tsx scripts/verify-reward-api.ts",
+    "demo:rewards": "tsx scripts/demo-solana-rewards.ts",
+    "test:gemini": "tsx scripts/verify-gemini-coaching.ts",
+    "test:elevenlabs": "tsx scripts/verify-elevenlabs.ts",
+    "test:e2e": "playwright test",
+    "benchmark:pose": "tsx scripts/benchmark-pose-models.ts",
+    "test:solana-transfer": "tsx scripts/verify-solana-transfer.ts"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "^4.29.0",
+    "@google/genai": "^2.22.0",
+    "@mediapipe/tasks-vision": "^1.0.1",
+    "@solana-program/memo": "^0.13.1",
+    "@solana-program/system": "^0.14.1",
+    "@solana/kit": "^8.3.0",
+    "@solana/kit-plugin-rpc": "^0.19.0",
+    "@solana/kit-plugin-wallet": "^0.20.0",
+    "@solana/react": "^8.3.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
+    "three": "^0.186.0",
+    "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@solana/kit-plugin-litesvm": "^0.19.0",
+    "@solana/kit-plugin-signer": "^0.19.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.20.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.13",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

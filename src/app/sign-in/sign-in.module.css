@@ -1,0 +1,123 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  background-image:
+    radial-gradient(560px circle at 92% -10%, var(--glow-sage), transparent 60%),
+    radial-gradient(480px circle at -8% 40%, var(--glow-rose), transparent 60%);
+  color: var(--ink);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 68px;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  letter-spacing: -0.6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.wordmark span {
+  color: var(--clay);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-40);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  box-shadow: var(--shadow-1);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-8);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 var(--space-8);
+  font-weight: 600;
+  font-size: var(--text-xl);
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0 0 var(--space-24);
+  font-size: var(--text-base);
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/*
+ * The single call to action. Rendered as an anchor (the Auth0 routes are
+ * served by the proxy, not the App Router), so it needs the gap and
+ * text-decoration reset that a <button> would not.
+ */
+.submit {
+  width: 100%;
+  justify-content: center;
+  gap: var(--space-10);
+  margin-bottom: var(--space-24);
+  text-decoration: none;
+}
+
+.footNote {
+  margin: 0 0 var(--space-8);
+  font-size: var(--text-13);
+  text-align: center;
+}
+
+.footNote:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.footNote a,
+.footNote .linklike {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.disclosure {
+  margin: 0;
+  padding: var(--space-22);
+  text-align: center;
+  font-size: var(--text-12);
+  color: var(--muted);
+}
+
+.linklike {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: none;
+}

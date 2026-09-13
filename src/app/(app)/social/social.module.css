@@ -1,0 +1,410 @@
+/* Community uses the shared page container, not a width of its own. */
+.page {
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-32) var(--page-gutter) var(--space-64);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-24);
+  margin-bottom: var(--space-20);
+}
+
+.hero > div {
+  max-width: 780px;
+}
+
+.hero h1 {
+  max-width: 720px;
+}
+
+.eyebrow,
+.exerciseLabel,
+.coachTip span {
+  color: var(--muted);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: var(--text-base);
+}
+
+.shareAction {
+  min-height: 40px;
+  padding: 0 var(--space-16);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.shareAction:hover {
+  background: var(--sage);
+}
+
+.toolbar {
+  padding: var(--space-24) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+/* Same segmented control as the Overview period switch. */
+.sortTabs {
+  display: inline-flex;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--surface-inset);
+}
+
+.sortTabs button {
+  min-height: 34px;
+  padding: 0 var(--space-12);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.sortTabs button:hover {
+  color: var(--ink);
+}
+
+.sortTabs .activeTab {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-1);
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--muted);
+  font-size: var(--text-12);
+}
+
+/* Appearance comes from the shared field rules in globals.css; only the
+   width of this one is local. */
+.filter :global(.ui-select-root) {
+  width: auto;
+  min-width: 160px;
+}
+
+.communityLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: var(--space-44);
+  align-items: start;
+}
+
+.feed {
+  display: grid;
+  gap: var(--space-26);
+}
+
+.post {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: clip;
+  background: var(--card);
+  box-shadow: var(--shadow-1);
+}
+
+.postHeader {
+  min-height: 82px;
+  padding: var(--space-16) var(--space-20);
+  display: flex;
+  align-items: center;
+  gap: var(--space-13);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-circle);
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--text-12);
+  font-weight: 700;
+}
+
+.postHeader > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.postHeader strong {
+  font-size: var(--text-14);
+}
+
+.postHeader span {
+  color: var(--muted);
+  font-size: var(--text-12);
+}
+
+.postHeader .demoBadge {
+  margin-left: auto;
+  padding: var(--space-5) var(--space-8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-999);
+  font-size: var(--text-10);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.clipPreview {
+  min-height: 300px;
+  padding: var(--space-24);
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--ink) 94%, var(--black)),
+    var(--ink)
+  );
+  color: var(--paper);
+}
+
+.clipPreview::before,
+.clipPreview::after {
+  content: "";
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+  border-radius: var(--radius-circle);
+}
+
+.clipPreview::before {
+  width: 210px;
+  height: 210px;
+}
+
+.clipPreview::after {
+  width: 310px;
+  height: 310px;
+  opacity: 0.45;
+}
+
+.clipPreview > div:first-child {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.clipPreview > div span {
+  font-size: var(--text-10);
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.clipPreview > div strong {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.playIcon {
+  width: 64px;
+  height: 64px;
+  padding-left: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--paper) 55%, transparent);
+  border-radius: var(--radius-circle);
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.rank {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.5;
+}
+
+.postBody {
+  padding: var(--space-26) var(--space-28) var(--space-22);
+}
+
+.postBody h2 {
+  margin: var(--space-4) 0 var(--space-8);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.caption {
+  color: var(--muted);
+  font-size: var(--text-14);
+  line-height: 1.75;
+}
+
+.coachTip {
+  margin-top: var(--space-20);
+  padding: var(--space-16);
+  border-left: 3px solid var(--clay);
+  border-radius: var(--radius-sm);
+  background: var(--sage);
+}
+
+.coachTip p {
+  margin-top: var(--space-5);
+  font-size: var(--text-14);
+}
+
+.postActions {
+  min-height: 62px;
+  padding: var(--space-10) var(--space-20);
+  display: flex;
+  align-items: center;
+  gap: var(--space-18);
+}
+
+.postActions button {
+  min-width: 78px;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-999);
+  background: transparent;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  font-weight: 700;
+}
+
+.postActions button:disabled {
+  opacity: 0.65;
+}
+
+.postActions .voted {
+  border-color: var(--clay);
+  background: var(--sage);
+  color: var(--ink);
+}
+
+.sidebar {
+  display: grid;
+  gap: var(--space-22);
+  position: sticky;
+  top: 22px;
+}
+
+.sidebar section {
+  padding: var(--space-24);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow-1);
+}
+
+.sidebar h2 {
+  margin: var(--space-8) 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.sidebar section > p:last-child {
+  color: var(--muted);
+  font-size: var(--text-13);
+  line-height: 1.7;
+}
+
+@media (max-width: 1050px) {
+  .page {
+    width: calc(100% - 70px);
+  }
+
+  .communityLayout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: var(--space-28);
+  }
+}
+
+@media (max-width: 800px) {
+
+  .hero,
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero {
+    gap: var(--space-24);
+  }
+
+  .shareAction {
+    justify-content: space-between;
+  }
+
+  .toolbar {
+    padding: var(--space-18) 0;
+    gap: var(--space-14);
+  }
+
+  .sortTabs {
+    overflow-x: auto;
+  }
+
+  .filter {
+    justify-content: space-between;
+  }
+
+  .communityLayout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Keep both ranking previews in the same vertical sidebar stack. */
+  .sidebar {
+    position: static;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .clipPreview {
+    min-height: 240px;
+  }
+
+  .postHeader {
+    flex-wrap: wrap;
+  }
+
+  .postHeader .demoBadge {
+    margin-left: var(--space-57);
+  }
+
+  .postBody {
+    padding-inline: var(--space-20);
+  }
+
+  .postBody h2 {
+    font-size: var(--text-26);
+  }
+}

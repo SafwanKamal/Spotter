@@ -1,0 +1,211 @@
+/* Single source of truth for the visual theme. See docs/ui-system.md.
+ *
+ * Two layers live here:
+ *
+ * 1. THE SCALE — a small, named set of steps (type, space, radius,
+ *    shadow, color). New work uses these. They are few on purpose: a
+ *    system is a set of decisions, and a token for every integer is the
+ *    absence of one.
+ * 2. LEGACY ALIASES — the older `--text-<px>` / `--space-<px>` /
+ *    `--radius-<px>` names, each resolved to the nearest step above.
+ *    They exist so the hundreds of call sites across globals.css and
+ *    the route modules keep working while they are migrated, and so
+ *    that two rules asking for "about 14px" now get the same 14px.
+ */
+:root {
+  --space-unit: 1px;
+  --type-scale: 1;
+  --radius-scale: 1;
+
+  /* ---- Color ---- */
+  --paper: #f2f1f6;
+  --card: #ffffff;
+  --ink: #26263a;
+  --muted: #5f5f78;
+  --line: #e3e1ec;
+  --sage: #e9e8f4;
+  --rose: #fbe6dd;
+  --clay: #e0714f;
+
+  /* Accent used as text needs more contrast than the fill accent. */
+  --accent: var(--clay);
+  --accent-ink: #b45333;
+  --accent-soft: #f3c9b8;
+  --accent-bright: #ea8360;
+
+  /* ---- Elevation: two levels, resting and raised ---- */
+  --shadow-1:
+    0 1px 2px rgba(38, 38, 58, 0.04), 0 10px 26px -18px rgba(38, 38, 58, 0.22);
+  --shadow-2:
+    0 2px 4px rgba(38, 38, 58, 0.06), 0 18px 40px -20px rgba(38, 38, 58, 0.28);
+  --shadow-soft: var(--shadow-1);
+  --shadow-soft-tint: var(--shadow-1);
+  --shadow-dashboard: var(--shadow-1);
+  --shadow-hover: var(--shadow-2);
+
+  /* ---- Page geometry: every route uses one of these two widths ---- */
+  --page-max: 1180px;
+  --page-max-narrow: 880px;
+  --page-gutter: clamp(20px, 4vw, 44px);
+  --stage-height: 520px;
+
+  /* ---- Type: one scale. Display steps are for numerals and the
+     wordmark, never for running text. ---- */
+  --text-2xs: calc(11px * var(--type-scale));
+  --text-xs: calc(12px * var(--type-scale));
+  --text-sm: calc(13px * var(--type-scale));
+  --text-base: calc(15px * var(--type-scale));
+  --text-md: calc(17px * var(--type-scale));
+  --text-lg: calc(20px * var(--type-scale));
+  --text-xl: calc(26px * var(--type-scale));
+  --text-2xl: calc(34px * var(--type-scale));
+  --display-1: calc(44px * var(--type-scale));
+  --display-2: calc(64px * var(--type-scale));
+
+  /* ---- Radius ---- */
+  --radius-xs: calc(4px * var(--radius-scale));
+  --radius-sm: calc(8px * var(--radius-scale));
+  --radius-md: calc(12px * var(--radius-scale));
+  --radius-lg: calc(18px * var(--radius-scale));
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ---- Semantic roles and visualization colors ---- */
+  --disabled-text: #9997ab;
+  --disabled-surface: #e9e8f0;
+  --disabled-border: #d3d1e0;
+  --focus-ring: #3d3a7a;
+  /* The halo behind a focused field: the ring colour at low opacity. */
+  --focus-halo: rgba(61, 58, 122, 0.22);
+  --surface-hover: #fafafe;
+  --surface-inset: #ececf5;
+  --stage-surface: #201d38;
+  --stage-panel: #2b2850;
+  --stage-text: #f2f1f6;
+  --stage-border: #6b678f;
+  --illustration-stroke: #4a47a0;
+  --border-warm: #cfccdf;
+  --border-strong: #c6c3d8;
+  --illustration-border: #b3b0d0;
+  --text-secondary: #5f5f78;
+  --action-hover: #201d38;
+  --border-action: #a8a4c8;
+  --text-warning: #a8452a;
+  --text-detail: #3a3752;
+  --border-subtle: #dcdaeb;
+  --stage-muted: #d8d6e8;
+  --chart-grid: #dcdaeb;
+  --illustration-accent: #6b67b0;
+  --white: #fff;
+  --pose-landmark: #f2b84b;
+  --chart-selected: #e9e8f4;
+  --replay-surface: #eeecf5;
+  --replay-bone: #363355;
+  --replay-grid-major: #c3c0d8;
+  --replay-grid-minor: #e9e8f2;
+  --black: #000;
+  /* The page wash is atmosphere, not decoration: keep it below the
+     threshold where it competes with content in a screenshot. */
+  --glow-rose: rgba(224, 113, 79, 0.13);
+  --glow-sage: rgba(61, 58, 122, 0.09);
+  --text-on-accent: rgba(255, 255, 255, 0.92);
+  --illustration-on-accent: rgba(255, 255, 255, 0.85);
+  --nav-surface: rgba(247, 246, 251, 0.94);
+  --dashboard-card: var(--card);
+  --dashboard-line: #ece9f4;
+  --dashboard-accent: var(--accent-bright);
+  --dashboard-accent-text: var(--accent-ink);
+  --dashboard-accent-deep: #c85f3c;
+  --dashboard-positive: #4f8268;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: var(--font-public-sans), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-newsreader), Georgia, serif;
+
+  /* ---- Legacy spacing aliases: snapped to a 4px grid ---- */
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 4px;
+  --space-5: 4px;
+  --space-6: 8px;
+  --space-7: 8px;
+  --space-8: 8px;
+  --space-9: 8px;
+  --space-10: 12px;
+  --space-11: 12px;
+  --space-12: 12px;
+  --space-13: 12px;
+  --space-14: 16px;
+  --space-15: 16px;
+  --space-16: 16px;
+  --space-18: 20px;
+  --space-20: 20px;
+  --space-22: 24px;
+  --space-24: 24px;
+  --space-25: 24px;
+  --space-26: 24px;
+  --space-28: 28px;
+  --space-30: 28px;
+  --space-32: 32px;
+  --space-34: 32px;
+  --space-35: 36px;
+  --space-36: 36px;
+  --space-38: 40px;
+  --space-40: 40px;
+  --space-42: 40px;
+  --space-44: 44px;
+  --space-48: 48px;
+  --space-50: 48px;
+  --space-52: 52px;
+  --space-54: 52px;
+  --space-55: 56px;
+  --space-57: 56px;
+  --space-60: 60px;
+  --space-62: 64px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-96: 96px;
+
+  /* ---- Legacy type aliases: snapped to the scale above ---- */
+  --text-10: var(--text-2xs);
+  --text-11: var(--text-2xs);
+  --text-12: var(--text-xs);
+  --text-13: var(--text-sm);
+  --text-14: var(--text-base);
+  --text-15: var(--text-base);
+  --text-16: var(--text-base);
+  --text-17: var(--text-md);
+  --text-18: var(--text-md);
+  --text-19: var(--text-md);
+  --text-20: var(--text-lg);
+  --text-21: var(--text-lg);
+  --text-22: var(--text-lg);
+  --text-23: var(--text-lg);
+  --text-24: var(--text-xl);
+  --text-25: var(--text-xl);
+  --text-26: var(--text-xl);
+  --text-27: var(--text-xl);
+  --text-28: var(--text-xl);
+  --text-29: var(--text-xl);
+  --text-30: var(--text-2xl);
+  --text-31: var(--text-2xl);
+  --text-32: var(--text-2xl);
+  --text-34: var(--text-2xl);
+  --text-36: var(--text-2xl);
+  --text-39: var(--display-1);
+  --text-40: var(--display-1);
+  --text-48: var(--display-1);
+  --text-58: var(--display-1);
+  --text-75: var(--display-2);
+  --text-82: var(--display-2);
+  --text-88: var(--display-2);
+
+  /* ---- Legacy radius aliases ---- */
+  --radius-4: var(--radius-xs);
+  --radius-5: var(--radius-xs);
+  --radius-6: var(--radius-sm);
+  --radius-9: var(--radius-sm);
+  --radius-18: var(--radius-lg);
+  --radius-20: var(--radius-lg);
+  --radius-26: var(--radius-lg);
+  --radius-999: var(--radius-pill);
+}
