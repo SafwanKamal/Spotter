@@ -3074,7 +3074,7 @@ h3 {
 
 
 /* Competition rail and details. Shared surface/control recipes remain in UI primitives. */
-.competition-app-layout { display:grid; grid-template-columns:300px minmax(0,1fr); align-items:start; gap:var(--space-24); max-width:calc(var(--page-max) + 300px); margin-inline:auto; padding-inline:var(--page-gutter); }
+.competition-app-layout { display:grid; grid-template-columns:300px minmax(0,1fr); align-items:start; gap:var(--space-24); max-width:var(--page-wide-max); margin-inline:auto; padding-inline:var(--page-gutter); }
 .competition-app-layout > .app-main > :first-child { padding-inline:0; }
 .competition-app-layout > .app-main { min-width:0; }
 .competition-sidebar { padding:var(--space-32) var(--space-24) 0 0; border-right:1px solid var(--line); position:sticky; top:0; max-height:100dvh; overflow:auto; }
@@ -3126,7 +3126,7 @@ h3 {
 .competition-wallet p { font-size:var(--text-sm); line-height:1.6; }
 @media(max-width:1100px) {
  .competition-app-layout { display:flex; flex-direction:column; gap:0; padding-inline:0; }
- .competition-app-layout > .app-main > :first-child { padding-inline:var(--page-gutter); }
+ .competition-app-layout > .app-main > :first-child { max-width:none; width:100%; padding-inline:var(--page-gutter); }
  .competition-app-layout > .app-main { width:100%; }
  .competition-sidebar { order:-1; position:static; max-height:none; width:100%; border-right:0; border-bottom:1px solid var(--line); padding:var(--space-12) var(--page-gutter); }
  .competition-sidebar-desktop { display:none; }
@@ -3143,3 +3143,6 @@ h3 {
  .competition-table th,.competition-table td { padding:var(--space-12) var(--space-4); }
  .competition-table { font-size:var(--text-xs); }
 }
+
+/* Community header and its three-column content share the same outer edges. */
+.site-header-wide { max-width:var(--page-wide-max); }

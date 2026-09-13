@@ -45,6 +45,7 @@
 
   /* ---- Page geometry: every route uses one of these two widths ---- */
   --page-max: 1180px;
+  --page-wide-max: calc(var(--page-max) + 300px);
   --page-max-narrow: 880px;
   --page-gutter: clamp(20px, 4vw, 44px);
   --stage-height: 520px;

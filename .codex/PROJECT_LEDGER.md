@@ -14,7 +14,7 @@ Canonical repository: **https://github.com/SafwanKamal/Spotter.git** (user-owned
 | Current blocker or risk | Gym directory/athletes are fictional operator-managed demos; no external gym feed or automatic reviewed enrollment. Human wallet-extension approval untested. Upgradeable devnet program has no refund path. Global suite has ten stale-UI failures and Replay lint errors. |
 | Exact next action | Competition sidebar now sits on the left, only in Community (`/social` and nested routes); detail pages remain accessible without it. Continue the documented real-directory/wallet rehearsal handoffs. |
 | Most relevant prior chat | [Competition implementation](codex://threads/01a09afb-3cb2-7d02-9449-3675086fd790) |
-| Ledger updated | 2026-09-13T09:20:32-05:00 |
+| Ledger updated | 2026-09-13T09:54:21-05:00 |
 
 ## Status Legend
 
@@ -780,3 +780,10 @@ Use `$maintain-project-ledger`. Read `.codex/PROJECT_LEDGER.md`, starting with `
 - No application code was changed beyond the repository-URL references above; no tests were run in this task. Outstanding handoffs (macOS `npm test` / `npm run test:e2e` / `npm run build`, regenerating a devnet receipt with the `spotter:v1` memo prefix, old shared-UI selector repairs and Replay lint) remain open.
 
 - 2026-09-13T14:49:37+00:00 — Repository synced to canonical SafwanKamal/Spotter; outstanding working tree committed and pushed to `main`.
+
+### Community gutter alignment and publication — 2026-09-13T09:54:21-05:00
+
+- User requested another spacing pass and upload of all project changes. Current branch `main`; prior milestone `73bdbb5` already contains the competition implementation and Spotter rebrand. Current origin verified as `https://github.com/SafwanKamal/Spotter.git`.
+- Unified Community header/content width through `--page-wide-max`. Existing balanced outer grid gutters retained. Removed the mobile Community content's extra width cap so header, event disclosure and feed have matching horizontal padding.
+- Browser evidence: at 1440px, both content edges and header gutters are 44px; at the normal 590px viewport all three surfaces have 23.6px padding and no extra side margins. No horizontal overflow at either width. TypeScript and focused shell lint pass.
+- User authorized committing/pushing all current project changes. Commit follows this ledger entry; no transaction or funding changes.

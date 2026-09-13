@@ -103,3 +103,5 @@ Run `npm test`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, and `PLAYWR
 Review the generated `test-results/ui-*.png` screenshots when making visual changes. Summarize changed theme roles/components and validation in the project ledger. Keep route state, scoring and backend contracts separate from presentation changes.
 
 Competition UI: `competition-provider.tsx` shares the fresh directory/chain snapshot; `competition-panel.tsx` owns the Community-only responsive rail; `competition-workspace.tsx` shows standings and prize distribution. Wallet code loads only on the detail route. Competition layout consumes existing tokens and Card/Button/Select primitives; directory and on-chain boundaries are documented in `docs/competitions.md`.
+
+Community uses `--page-wide-max` for both its header and competition/feed grid. One outer gutter owns desktop spacing; on mobile, the header, disclosure and feed use `--page-gutter` without an additional narrow content cap.

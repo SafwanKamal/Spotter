@@ -42,7 +42,7 @@ export default function SiteShell({
           from .env.local to restore the sign-in gate.
         </p>
       ) : null}
-      <header className="site-header">
+      <header className={isCommunity ? "site-header site-header-wide" : "site-header"}>
         <Link className="wordmark" href="/" aria-label="Spotter home">
           <span>SPOT</span>TER
         </Link>
