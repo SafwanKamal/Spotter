@@ -2,19 +2,19 @@
 
 ## Resume Here
 
-Canonical repository: **https://github.com/SafwanKamal/FormChain.git** (user-owned). All future work targets this origin. Local path remains `/Users/safwankamal/Documents/HackwestTX`. Earlier branch and remote entries below are historical.
+Canonical repository: **https://github.com/SafwanKamal/Spotter.git** (user-owned). All future work targets this origin. Local path remains `/Users/safwankamal/Documents/HackwestTX`. Earlier branch and remote entries below are historical.
 
 | Field                      | Last observed state                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Project goal               | Build a hackathon prototype that reviews gym exercise video, teaches through a trainer community, replays motion, and records optional Solana receipts.                                                             |
 | Current phase              | Local-first multi-route MVP (Analyze / Replay / Community / Profile; rewards nested under Profile) with automatic five-exercise upload analysis, live camera coaching, and ElevenLabs spoken cues. Theme redesign may still be concurrent. |
-| Branch / commit | `main` reinitialized from the published project snapshot with SafwanKamal-linked author identity; canonical origin `https://github.com/SafwanKamal/FormChain.git`. Old history retained only in a local backup branch. Concurrent competition/UI edits remain uncommitted. |
-| Active primary sub-problem | SP-004 — Solana product-case assessment (planned only); concurrent SP-003 Kimodo work preserved |
-| Last validated milestone | Warm Kimodo ~3s uncached. Push-up/plank prompts rewritten for visible arm travel; cache keys hash prompt text so old flat clips are skipped. |
-| Current blocker or risk | New push-up / plank up-down clips still need one live Generate each to confirm Kimodo follows the stronger prompts. After worker restart, preload takes ~1–2 min. |
-| Exact next action | Proposed: scope one devnet sponsor-funded challenge with on-chain budget, issuer authorization and single-use claims; not yet selected or implemented. Concurrent Replay follow-up remains below. |
-| Most relevant prior chat   | Unavailable from current surface                                                                                                                                       |
-| Ledger updated | 2026-09-13T08:37:17-05:00 |
+| Branch / commit | `main` at `98a45d78b8d26cbb427ffc0398e9445476d3aef5` after concurrent repository migration; canonical origin retained. Earlier competition core is in the migrated snapshot; finishing competition/UI changes and unrelated branding work remain uncommitted. This task made no commit/push. |
+| Active primary sub-problem | SP-004 — competition sidebar and devnet prize-pool flow implemented; production trust remains separate |
+| Last validated milestone | Three pools funded with 0.031 devnet SOL total; lunge demo finalized and 0.001 SOL paid 50/30/20 to three wallets. Deployed binary equals LiteSVM-tested binary. 81 unit tests, five focused Chrome checks, TypeScript and production build pass. |
+| Current blocker or risk | Gym directory/athletes are fictional operator-managed demos; no external gym feed or automatic reviewed enrollment. Human wallet-extension approval untested. Upgradeable devnet program has no refund path. Global suite has ten stale-UI failures and Replay lint errors. |
+| Exact next action | Competition sidebar now sits on the left, only in Community (`/social` and nested routes); detail pages remain accessible without it. Continue the documented real-directory/wallet rehearsal handoffs. |
+| Most relevant prior chat | [Competition implementation](codex://threads/01a09afb-3cb2-7d02-9449-3675086fd790) |
+| Ledger updated | 2026-09-13T09:20:32-05:00 |
 
 ## Status Legend
 
@@ -47,13 +47,15 @@ Target architecture (step 4 is adapter-complete but not live-model-verified; ste
 6. Community and Rewards share account aliases, period/exercise filters, search, tie ranks, pagination, own-rank statistics, and recent point history. Trainer posts/upvotes remain the separate local fictional feed.
 7. Wallet UI builds an actual System Program transfer from the connected wallet, checks the devnet genesis hash, and requires wallet approval. It does not convert points into SOL. Local LiteSVM and public-devnet CLI transfers are verified (0.001 SOL recipient delta, Explorer-finalized). The in-app connected-wallet approval click-path was not re-run after funding. Public demo/proof server-signing routes return 410. Legacy issuer-protected attestation/redemption APIs remain a separate experimental protocol, not the participation leaderboard or a treasury payout system.
 
+8. Competition rail and `/profile/competitions/[id]` share a 30-second organizer-directory/confirmed-devnet feed. The custom competition program holds fixed sponsor-funded pools and records one organizer finalization after closing, three winner wallets/results digest, and one claim bit per rank. Browser instructions fund/finalize/claim; local scripted devnet flows verified actual payouts. Metadata remains organizer-reviewed and fictional in the demo; on-chain funds do not depend on participation points. See `docs/competitions.md` and `docs/competition-devnet-verification.md`.
+
 ### Development Sequence
 
 ```mermaid
 flowchart TD
     SP001["SP-001 Feasibility and scope"] --> SP002["SP-002 Pose and Gemini analysis"]
     SP002 --> SP003["SP-003 Kimodo replay"]
-    SP002 --> SP004["SP-004 Solana social proof"]
+    SP002 --> SP004["SP-004 Competition pools"]
     classDef active fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
     classDef ready fill:#fef3c7,stroke:#ca8a04,color:#713f12
     classDef deferred fill:#f3f4f6,stroke:#6b7280,color:#374151
@@ -81,7 +83,7 @@ flowchart TD
 | SP-001      | ✅ COMPLETE | `codex/movement-review` / repository root | `7624389`               | Current task | Scope approved and implemented through the motion adapter                    |
 | SP-002      | 🔵 ACTIVE   | `codex/movement-review` / repository root | `615a834` + uncommitted | Current task | Baseline stabilized (NEXT-009); move inference off main thread                |
 | SP-003      | 🔵 ACTIVE   | `codex/movement-review` / repository root | `615a834` + uncommitted | Current task | Warm in-process gen verified ~3s; keep text encoder + preload; avoid CLI fallback |
-| SP-004      | 🔵 ACTIVE   | `codex/movement-review` / repository root | `615a834` + uncommitted | Current task | Public-devnet CLI transfer verified; in-app wallet click-path and monetary rewards remain open |
+| SP-004 | 🔵 ACTIVE | `main` / repository root | `98a45d7` + uncommitted | [Competition task](codex://threads/01a09afb-3cb2-7d02-9449-3675086fd790) | Devnet pools/payouts and responsive UI verified; human wallet and production issuer remain open |
 | SP-006      | ✅ COMPLETE | `codex/movement-review` / repository root | `615a834` + uncommitted | Current task | Profile owns metadata and nested rewards; desktop/mobile navigation verified |
 | SP-007      | ✅ COMPLETE | `codex/movement-review` / repository root | `615a834` + uncommitted | Current task | Live participation ranking added; trainer posts remain fictional and browser-local         |
 | SP-008      | ✅ COMPLETE | `codex/movement-review` / repository root | `615a834` + uncommitted | Current task | Universal Login and signup verified on localhost; live account round-trip left to the user |
@@ -94,7 +96,7 @@ flowchart TD
 | SP-001 | MVP architecture and feasibility |        1 | ✅ COMPLETE | None     | SP-002, SP-003, SP-004 | Scope accepted                                                |
 | SP-002 | Pose and Gemini analysis         |        2 | 🔵 ACTIVE   | SP-001   | SP-003, SP-004         | Workerize inference and broaden clips                         |
 | SP-003 | Kimodo canonical replay          |        3 | 🔵 ACTIVE   | SP-002   | Demo UI                | Confirm UI Generate feels fast; optional restart for warmup 503 guard |
-| SP-004 | Solana workout proof and rewards |        3 | 🔵 ACTIVE   | SP-002   | Social feed            | Optional: confirm Rewards wallet UI with the funded key; monetary eligibility/treasury remain separate |
+| SP-004 | Solana workout proof and rewards |        3 | 🔵 ACTIVE   | SP-002   | Social feed            | Competition demo implemented and verified on devnet; production enrollment/issuer and human wallet rehearsal remain separate |
 | SP-006 | Multi-page task architecture     |        4 | ✅ COMPLETE | SP-005   | Shared theme redesign  | Preserve route boundaries while applying the next theme       |
 | SP-007 | Trainer community feed           |        5 | ✅ COMPLETE | SP-002   | Social backend         | Participation leaderboard verified; plan production publishing and moderation     |
 | SP-008 | Auth0 login and signup           |        6 | ✅ COMPLETE | SP-006   | Social/rewards identity | Complete one live sign-in on localhost; keep app usable without an account |
@@ -267,6 +269,9 @@ Defines the interfaces and fallback strategy for all implementation work.
 
 ### SP-004 — Solana workout proof and rewards
 
+- Current competition override: user authorized a competition sidebar, funding pool, leaders and post-competition prizes. Implemented shared responsive rail and details plus native Rust escrow program on devnet `2Ti4CixeVPHq7Weu3ihRP9auAvAEjy9ZhzNTh9U4ntbd`. Three pools funded (0.01 / 0.02 / 0.001 SOL). Lunge results finalized; 500,000 / 300,000 / 200,000 lamports paid to demo winners. All recorded funding/finalization/claim receipts finalized; deployed bytes equal local SBF. This supersedes earlier no-payout/no-custom-program descriptions for **devnet demonstrations only**. Source/trust/validation details are in `docs/competition-devnet-verification.md`.
+- Reviewed results stay operator-managed; no auto enrollment/real gym feed is connected. Hash integrity is checked against published standings after finalization. The program is upgradeable and unaudited with no cancellation/refund instruction. Human browser-wallet approval was not performed; the same instruction builders executed with private local demo signers. No secrets are exposed through the API or committed.
+
 - Current override (2026-09-13T06:48:00-05:00): public-devnet CLI transfer is verified. Sender `9ceRK5nZAJwxZoqZRgZuvZ3NFmoUeGuGL3HJwkdACCeW` received 0.5 SOL (airdrop `25cVe2z2…CEg3`), then `RUN_SOLANA_DEVNET=1 npm run test:solana-transfer` sent 0.001 SOL to throwaway `AvJrxc3s…rfgd`. Signature `MJJVoJP3…mSJJ5` is Explorer-finalized; recipient delta 1,000,000 lamports; remaining sender 498,995,000 lamports. In-app connected-wallet approval was not re-clicked. Demo presentation and server-owned public signing remain retired. Monetary eligibility/treasury remain separate from participation points.
 
 
@@ -327,6 +332,8 @@ Defines the interfaces and fallback strategy for all implementation work.
 | NEXT-009 | SP-002 | P0 | COMPLETE | Stabilization verified 2026-09-12 | Corrected synthetic rigs, leaderboard request lifecycle, mobile contrast, and stale browser checks | 43 tests, lint, typecheck, build, 9 Chrome checks pass; private clip skipped | `codex/movement-review` | Unavailable |
 | NEXT-010 | SP-002 | P1 | BLOCKED | Auto detect is implemented; needs labeled real clips spanning all five supported exercises and varied camera conditions | Tune interpretable classifier and compare pose models; no general activity-recognition claim | Confusion matrix and per-exercise coverage justify thresholds and any model change | `codex/movement-review` | Current task |
 | NEXT-011 | SP-009 | P2 | OPTIONAL | Local clip recap TTS is verified; Analyze now speaks a Gemini debrief after **Get coaching**, but that path is untested with a live provider response | Confirm bounded Gemini speech after a real uploaded clip | Hear this review / auto-play uses Gemini summary plus first cue | `codex/movement-review` | Current task |
+
+| NEXT-012 | SP-004 | P1 | OPTIONAL | Identify a real gym/organizer source and review policy first | Replace fictional directory with reviewed enrollment and authenticated publication; no real-value launch | Validated gym updates, wallet-bound reviewed entries and immutable result provenance; never promote client summaries to verified evidence | `codex/competition-directory` | [Competition task](codex://threads/01a09afb-3cb2-7d02-9449-3675086fd790) |
 
 <details>
 <summary>NEXT-009 handoff prompt</summary>
@@ -726,3 +733,50 @@ Use `$maintain-project-ledger`. Read `.codex/PROJECT_LEDGER.md`, starting with `
 - User deleted/recreated FormChain after seeing stale contributor attribution. Verified the recreated public repository existed with no refs. Pushed only clean `main` at `9979a6005f6bf417fef9531800013030c29fdebf`; no old branches or tags pushed.
 - GitHub API verified one published snapshot commit attributed to SafwanKamal, contributors list containing only SafwanKamal, and only remote branch main. Local concurrent competition/UI work remains uncommitted and preserved.
 - This documentation follow-up uses the same verified SafwanKamal identity. No application code changed or tests run. Next: continue current implementation against canonical FormChain origin. Session ID/link unavailable from current surface.
+
+
+### Product rename FormChain -> Spotter — 2026-09-13T09:06:39-05:00
+
+- User selected "Spotter" as the product name and approved a brand-plus-protocol-strings rename (UI copy, docs, package name, client storage keys, issuer header, on-chain memo prefix and zod version literals), explicitly excluding the Rust crate and its built artifacts. Related SP-001. Session ID/link unavailable from current surface.
+- Applied scripted substitution across `src/`, `tests/`, `scripts/`, `services/kimodo/`, `package.json`, `package-lock.json`, `README.md`, `AGENTS.md` and `docs/*.md`, protecting `https://github.com/SafwanKamal/FormChain` and the `formchain_competition` build-artifact paths. Wordmark in `src/components/site-shell.tsx` changed from `<span>FORM</span>CHAIN` to `<span>SPOT</span>TER`.
+- Protocol identifiers now read `spotter.rewards.v1`, `spotter.evidence.v1`, `spotter.gym-visit.v1`, `spotter.reward-attestation.v1`, `spotter.workout.v1`, memo prefix `spotter:v1`, redemption domain `spotter:redeem:v1`, header `x-spotter-issuer-token`. Producers and consumers were renamed together; a grep of the remaining `formchain` matches shows only the repository URL and crate artifact paths.
+- Migrated `.data/rewards.sqlite` in place: `athletes.id` (1 row) and `participation.athlete` (2 rows) moved from `auth0|formchain-e2e` to `auth0|spotter-e2e`, matching the renamed `DEMO_E2E_ID`. Backup at `.data/rewards.sqlite.prerename.bak`.
+- Validation: `npx tsc --noEmit` clean (0 errors). `npm run lint` reports 2 pre-existing `react-hooks/set-state-in-effect` errors in `src/components/motion-replay.tsx`, untouched by this rename. Unit tests, Playwright e2e and `next build` could NOT be run from the Claude device shell because `node_modules` holds macOS esbuild binaries and that shell is Linux; they must be rerun on the user's macOS terminal before any rename claim is treated as verified.
+- Not renamed, by decision: Rust crate `formchain-competition`, `programs/competition/target/deploy/formchain_competition.so` and its keypair (so the deployed devnet program ID is unchanged and no rebuild is needed), and the canonical GitHub repository URL.
+- Next: run `npm test`, `npm run test:e2e` and `npm run build` on macOS; decide whether to rename the GitHub repository to `Spotter`; regenerate one devnet receipt so the Explorer memo shows the `spotter:v1` prefix before the demo.
+
+- 2026-09-13T09:06:39-05:00 — Product renamed FormChain -> Spotter across app, docs and protocol strings; crate, deployed artifacts and repo URL intentionally unchanged.
+
+### Competition sidebar, escrow and live devnet payouts — 2026-09-13T09:08:12-05:00
+
+- Session: `01a09afb-3cb2-7d02-9449-3675086fd790`, [open task](codex://threads/01a09afb-3cb2-7d02-9449-3675086fd790). Primary SP-004, related SP-006/SP-007. Start state was `codex/movement-review` at `615a834`; concurrent repository migration changed this to `main` at `98a45d78b8d26cbb427ffc0398e9445476d3aef5`. Existing and concurrent branding edits preserved. This task did not commit/push; some early core files entered HEAD through that concurrent migration.
+- Implemented: shared competition feed/provider (refresh every 30 seconds/on visibility/manual), desktop side rail/mobile disclosure, pool totals/remaining/paid amounts, reviewed leaders, 50/30/20 allocation, wallet fund/finalize/claim controls and final-result digest check. Latest directory data is local operator-managed JSON; fictional gyms/athletes clearly labeled. No public third-party discovery service or automatic workout entry pipeline is claimed.
+- Solana: built native program with official cargo-build-sbf; installed official CLI for devnet deployment. Program `2Ti4CixeVPHq7Weu3ihRP9auAvAEjy9ZhzNTh9U4ntbd` is executable and on-chain binary matches locally tested bytes. Funded three PDAs with 0.031 SOL. Lunge 0.001 SOL paid in exact 50/30/20 shares and claimed bitmap is 7. Public RPC 429 interrupted one transaction confirmation; chain state was reconciled and remaining actions resumed without duplicate payouts. Test-wallet rent initialization was paid separately. Receipts/checksum in `docs/competition-devnet-verification.md`.
+- Validation: 81/81 unit tests; compiled SBF LiteSVM checks cover end-time/issuer/winner authorization, immutable finalization, double-claim rejection, exact rounding, rent preservation and insufficient-fund rollback; five focused Chrome checks pass (two live devnet desktop/mobile with Axe/no overflow, two deterministic fixture route tests, stale-snapshot test). Final TypeScript and production build pass; focused lint passes. Full Chrome run: 17 passed, 10 failed, 8 skipped (including private clip and bypassed auth gates). Failures reference pre-existing old headings, native select assumptions and former wordmark color. Global lint retains two pre-existing Replay hook errors. Fixed a narrow pre-existing coaching-keyframe type requirement to consume only start/bottom/end, allowing the production build to pass.
+- Artifacts: `programs/competition/`, `src/lib/competition*.ts`, `src/components/competition-*.tsx`, competition API/detail route, seed/deploy/demo/verification scripts, fixture/live browser tests and docs. `.env.local` contains only the additional public program ID; existing private credentials preserved. Generated signer files and program build output are gitignored. App browser opening was queued by the desktop tool.
+- Limits: devnet only, upgradeable/unaudited program, organizer-trusted rankings, no refunds/cancellation, three winners required, manual claim after organizer finalization (not a timed automatic transfer), browser-extension signature approval not manually verified. Real gym integration remains NEXT-012 OPTIONAL; production trust remains NEXT-004 BLOCKED. Concurrent brand migration may update labels after the recorded checks.
+- Next handoff: use `$maintain-project-ledger`, read Resume Here and `docs/competitions.md`, target SP-004/NEXT-012 only after identifying a real source, verify current Git state and preserve uncommitted work. For demo rehearsal use the funded open pools and settled lunge detail; do not re-seed or reset funded terms. Repair old shared UI test selectors and Replay lint in a separate stabilization pass. Update the ledger at handoff.
+
+- 2026-09-13T09:08:12-05:00 — SP-004/SP-006: competition side panel plus live devnet escrow/three-winner payout demo completed; current trust and test limits recorded.
+
+### Community-only competition sidebar — 2026-09-13T09:14:53-05:00
+
+- User requested the sidebar only in Community and the shared site arrow instead of diagonal glyphs. Primary SP-006, related SP-004. Task `01a09afb-3cb2-7d02-9449-3675086fd790`; branch `main`, HEAD `98a45d78b8d26cbb427ffc0398e9445476d3aef5`, existing/concurrent uncommitted work preserved; no commit/push.
+- `SiteShell` renders the competition rail/layout only on `/social` and its nested routes. Competition details retain the provider without the sidebar. Other primary tabs render full width without competition polling. Panel/detail/receipt links use the existing `ui/arrow.tsx` component. Updated competition setup docs.
+- Validation: four focused Chrome tests pass, including Community-to-detail navigation at 1440/390px, Axe/overflow checks after the route transition finishes, stale snapshot handling, and no sidebar/polling on Overview/Analyze/Replay/Profile/Rewards. TypeScript and focused ESLint pass; diff whitespace check passes. No transaction, policy or funding changes.
+- Next: existing real gym source and manual wallet rehearsal handoffs remain unchanged.
+
+### Left-side Community competitions — 2026-09-13T09:20:32-05:00
+
+- SP-006/SP-004, current task `01a09afb-3cb2-7d02-9449-3675086fd790`; `main` at `98a45d78b8d26cbb427ffc0398e9445476d3aef5`, uncommitted work preserved; no commit/push.
+- Moved the Community competition panel before main content in DOM order and changed the desktop grid to `300px minmax(0,1fr)`. Divider now borders its right edge. Mobile keeps the existing top disclosure. Other routes remain sidebar-free. Updated competition docs.
+- Validation: existing four competition Chrome checks pass at desktop/mobile, including navigation, overflow/accessibility, stale state and absence on other tabs. `git diff --check` passes. No funding or program changes. Existing handoffs remain unchanged.
+
+### Repository sync to SafwanKamal/Spotter — 2026-09-13T14:49:37+00:00
+
+- User directed all work be synced to https://github.com/SafwanKamal/Spotter, resolving the open "decide whether to rename the GitHub repository to Spotter" handoff. The GitHub repository was renamed FormChain -> Spotter; `origin` repointed accordingly and canonical-repository references updated in `README.md`, `AGENTS.md` and this ledger header. Historical ledger entries naming FormChain are left intact.
+- Committed the full outstanding working tree on `main` as a single commit: 76 files, +2515/-255, covering the competition system (program, provider/panel/wallet/workspace components, profile competitions route, competitions API), deploy/demo/receipt-verification scripts, devnet verification and Devpost docs, Spotter rename fallout, and expanded unit/browser test coverage. Local branches `codex/movement-review` and `codex/pre-attribution-reset` were intentionally not pushed.
+- The Claude device shell has no GitHub egress (HTTP 403 from proxy on CONNECT), so the push was performed from the Claude cloud container via a git bundle of the new commit; no working-tree files were copied between machines.
+- No application code was changed beyond the repository-URL references above; no tests were run in this task. Outstanding handoffs (macOS `npm test` / `npm run test:e2e` / `npm run build`, regenerating a devnet receipt with the `spotter:v1` memo prefix, old shared-UI selector repairs and Replay lint) remain open.
+
+- 2026-09-13T14:49:37+00:00 — Repository synced to canonical SafwanKamal/Spotter; outstanding working tree committed and pushed to `main`.

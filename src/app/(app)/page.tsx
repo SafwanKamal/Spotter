@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HomeDashboard from "@/components/home-dashboard";
 
 export const metadata: Metadata = {
-  title: "FormChain — Today",
+  title: "Spotter — Today",
 };
 
 export default function HomePage() {

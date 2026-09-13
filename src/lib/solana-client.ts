@@ -13,7 +13,7 @@ export const solanaClient = createClient()
   .use(
     walletSigner({
       chain: "solana:devnet",
-      storageKey: "formchain:devnet-wallet",
+      storageKey: "spotter:devnet-wallet",
     }),
   )
   .use(solanaRpc({ rpcUrl }))

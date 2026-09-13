@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CommunityRankings from "@/components/community-rankings";
 
 export const metadata: Metadata = {
-  title: "Community rankings — FormChain",
+  title: "Community rankings — Spotter",
 };
 
 export default async function CommunityRankingsPage({

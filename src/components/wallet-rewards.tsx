@@ -57,7 +57,7 @@ export default function WalletRewards() {
       <h2>Wallet</h2>
       <p>
         Connect your own wallet to send test SOL to another wallet on Solana
-        devnet. Participation points stay in FormChain; this transfer spends
+        devnet. Participation points stay in Spotter; this transfer spends
         your wallet’s test SOL.
       </p>
       {connected ? (

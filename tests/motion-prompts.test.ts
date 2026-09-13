@@ -21,7 +21,7 @@ test("every preset builds a Kimodo meta.json payload", () => {
     assert.match(meta.text, /^A person /);
     assert.match(meta.text, /\.$/);
     assert.ok(meta.text.length >= 24 && meta.text.length <= 500);
-    assert.equal(meta.formchain.name, spec.name);
+    assert.equal(meta.spotter.name, spec.name);
   }
   assert.ok(listMotionPresets().some((item) => item.id === "pushup"));
 });

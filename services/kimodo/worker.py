@@ -138,8 +138,8 @@ def validate_meta(meta, duration):
         payload["cfg"]["enabled"] = bool(cfg.get("enabled", True))
         payload["cfg"]["text_weight"] = float(cfg.get("text_weight", 2.0))
         payload["cfg"]["constraint_weight"] = float(cfg.get("constraint_weight", 2.0))
-    if isinstance(meta.get("formchain"), dict):
-        payload["formchain"] = meta["formchain"]
+    if isinstance(meta.get("spotter"), dict):
+        payload["spotter"] = meta["spotter"]
     return payload
 
 
@@ -298,7 +298,7 @@ def generate_inprocess(duration, meta):
 
 
 def generate_cli(duration, meta):
-    with tempfile.TemporaryDirectory(prefix="formchain-motion-") as folder:
+    with tempfile.TemporaryDirectory(prefix="spotter-motion-") as folder:
         root = Path(folder)
         input_folder = root / "input"
         input_folder.mkdir()

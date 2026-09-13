@@ -129,7 +129,7 @@ function TabIcon({ tab }: { tab: TabKey }) {
  * A brief themed overlay shown right after navigating between the app's
  * tabs. Next.js App Router navigations are typically near-instant once a
  * route is prefetched, so this isn't masking real load time — it's a
- * deliberate "beat" that ties the tab switch to FormChain's identity, with
+ * deliberate "beat" that ties the tab switch to Spotter's identity, with
  * a different, content-relevant animation for each destination.
  */
 export default function TabTransitionLoader() {

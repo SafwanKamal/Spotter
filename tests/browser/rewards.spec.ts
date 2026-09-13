@@ -95,7 +95,7 @@ test("recorded session claims use the account and update ranking", async ({
 }) => {
   await page.addInitScript(() =>
     sessionStorage.setItem(
-      "formchain.rewardSession.v1",
+      "spotter.rewardSession.v1",
       JSON.stringify({
         source: "live",
         exercise: "pushup",

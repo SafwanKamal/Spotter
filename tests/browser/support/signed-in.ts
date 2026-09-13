@@ -17,7 +17,7 @@ import { generateSessionCookie } from "@auth0/nextjs-auth0/testing";
 const SESSION_COOKIE_NAME = "__session";
 
 export const TEST_USER = {
-  sub: "auth0|formchain-e2e",
+  sub: "auth0|spotter-e2e",
   name: "Test Athlete",
   email: "test-athlete@example.com",
   email_verified: true,
@@ -46,7 +46,7 @@ export const test = base.extend<{ signedIn: void }>({
             // against the real tenant part-way through a test.
             expiresAt: nowInSeconds + 60 * 60,
           },
-          internal: { sid: "formchain-e2e", createdAt: nowInSeconds },
+          internal: { sid: "spotter-e2e", createdAt: nowInSeconds },
         },
         { secret },
       );

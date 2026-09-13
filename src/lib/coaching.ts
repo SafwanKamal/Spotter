@@ -111,7 +111,7 @@ function evenlySpaced<T>(items: T[], limit: number): T[] {
 
 export function selectCoachingKeyframes(
   keyframes: CoachingKeyframe[],
-  reps: RepSummary[],
+  reps: Pick<RepSummary, "start" | "bottom" | "end">[],
   limit = 6,
 ): CoachingKeyframe[] {
   if (!Number.isInteger(limit) || limit < 1 || limit > 6)

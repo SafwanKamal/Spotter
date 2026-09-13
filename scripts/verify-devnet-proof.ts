@@ -43,7 +43,7 @@ async function main() {
     memo = createWorkoutMemo(claim, await hashWorkoutClaim(claim));
   } else {
     const nonce = crypto.randomUUID();
-    memo = "formchain:integration-test:v1|nonce=" + nonce;
+    memo = "spotter:integration-test:v1|nonce=" + nonce;
   }
 
   const result = await client.memo.instructions

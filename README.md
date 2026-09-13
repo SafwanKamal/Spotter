@@ -1,6 +1,6 @@
-# FormChain — Movement Lab
+# Spotter — Movement Lab
 
-Canonical repository: [SafwanKamal/FormChain](https://github.com/SafwanKamal/FormChain).
+Canonical repository: [SafwanKamal/Spotter](https://github.com/SafwanKamal/Spotter).
 
 HackWesTX VII prototype. Browser-based squat review: clip upload, MediaPipe landmarks, complete repetitions, knee-angle timeline, phase keyframes, JSON export, an optional server-side Gemini coaching adapter, and a Kimodo-ready 3D motion viewer. The wellbeing redesign and its evidence are documented in [the design research report](docs/health-product-design-research.md).
 
@@ -201,7 +201,7 @@ Production social features require authenticated users and trainer verification,
 
 ### Server-attested prototype rewards
 
-The reward core is intentionally separate from the wallet memo. A trusted analysis service may call `POST /api/rewards/attest` with `x-formchain-issuer-token` only after it has independently accepted the workout evidence. The route recomputes the claim digest and returns a ten-minute HMAC-signed attestation bound to one wallet. The wallet must sign the exact off-chain redemption message before `POST /api/rewards/redeem` awards points. Reused attestations, claims, evidence IDs, and gym-visit IDs are rejected.
+The reward core is intentionally separate from the wallet memo. A trusted analysis service may call `POST /api/rewards/attest` with `x-spotter-issuer-token` only after it has independently accepted the workout evidence. The route recomputes the claim digest and returns a ten-minute HMAC-signed attestation bound to one wallet. The wallet must sign the exact off-chain redemption message before `POST /api/rewards/redeem` awards points. Reused attestations, claims, evidence IDs, and gym-visit IDs are rejected.
 
 Set independent random values of at least 32 bytes for `REWARD_ATTESTATION_SECRET` and `REWARD_ISSUER_TOKEN`. Both are server-only. The browser must never receive either value.
 
@@ -274,3 +274,7 @@ The old public demo endpoints now return 410 and cannot spend a server keypair. 
 The Wallet section connects a browser wallet and builds an actual System Program SOL transfer, requires wallet approval, checks the devnet genesis hash, and accepts up to 1 devnet SOL with exact integer lamport conversion. Points are not debited or converted by this transfer. No mainnet payouts or token redemption policy has been configured. A funded treasury, verified eligibility, approved payout amounts, and durable payout reconciliation are prerequisites for monetary rewards.
 
 Run `npm run test:solana-transfer` for a signed transfer and recipient-balance assertion in LiteSVM. `RUN_SOLANA_DEVNET=1 npm run test:solana-transfer` runs the same check on public devnet using `SOLANA_KEYPAIR_PATH` if configured, otherwise a throwaway signer. It sends 0.001 test SOL to a throwaway recipient; never configure a mainnet RPC. The script refuses a non-devnet genesis hash. Public validation currently fails at faucet funding because the configured sender has zero devnet SOL.
+
+## Gym competitions
+
+The responsive competition sidebar shows organizer-published challenges, confirmed Solana devnet prize pools, reviewed standings and the 50/30/20 payout split. Winners claim after organizer finalization. See [competition setup and trust boundaries](docs/competitions.md) and [verified devnet funding/payout receipts](docs/competition-devnet-verification.md). Demo gyms and athletes are fictional; devnet pool and payout transactions are real test-network operations.

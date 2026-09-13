@@ -7,7 +7,7 @@ import { authDisplayName, type PublicAuthUser } from "@/lib/auth-user";
 
 import { useEffect, useState, type FormEvent } from "react";
 
-const STORAGE_KEY = "formchain.profile.v1";
+const STORAGE_KEY = "spotter.profile.v1";
 const FOCUSES = [
   "Build consistency",
   "Improve technique",

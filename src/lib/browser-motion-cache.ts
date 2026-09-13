@@ -1,6 +1,6 @@
 import { snapMotionDuration, validateBvh } from "./motion";
 
-const STORAGE_KEY = "formchain.motion-cache.v3";
+const STORAGE_KEY = "spotter.motion-cache.v3";
 const MAX_ENTRIES = 6;
 
 type BrowserMotionEntry = {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AnalyzeSwitcher from "@/components/analyze-switcher";
 
 export const metadata: Metadata = {
-  title: "Analyze movement — FormChain",
+  title: "Analyze movement — Spotter",
 };
 
 export default function AnalyzePage() {

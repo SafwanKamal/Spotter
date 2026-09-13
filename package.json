@@ -1,5 +1,5 @@
 {
-  "name": "formchain",
+  "name": "spotter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,12 @@
     "test:elevenlabs": "tsx scripts/verify-elevenlabs.ts",
     "test:e2e": "playwright test",
     "benchmark:pose": "tsx scripts/benchmark-pose-models.ts",
-    "test:solana-transfer": "tsx scripts/verify-solana-transfer.ts"
+    "test:solana-transfer": "tsx scripts/verify-solana-transfer.ts",
+    "seed:competitions": "tsx scripts/seed-competitions.ts",
+    "build:competition": "cargo build-sbf --manifest-path programs/competition/Cargo.toml",
+    "test:competition-program": "tsx scripts/verify-competition-program.ts",
+    "deploy:competition": "tsx scripts/deploy-competition.ts",
+    "demo:competition": "tsx scripts/run-competition-demo.ts"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.29.0",

@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import MobileTabBar from "@/components/mobile-tab-bar";
 import TabTransitionLoader from "@/components/tab-transition-loader";
+import CompetitionPanel from "@/components/competition-panel";
+import { CompetitionProvider } from "@/components/competition-provider";
 
 import { navigation, isRouteActive } from "@/lib/navigation";
 import { authDisplayName, type PublicAuthUser } from "@/lib/auth-user";
@@ -20,6 +22,14 @@ export default function SiteShell({
   authBypassed?: boolean;
 }) {
   const pathname = usePathname();
+  const isCommunity = pathname === "/social" || pathname.startsWith("/social/");
+  const needsCompetitions =
+    isCommunity || pathname.startsWith("/profile/competitions/");
+  const content = (
+    <main id="main-content" className="app-main">
+      {children}
+    </main>
+  );
 
   return (
     <>
@@ -28,13 +38,13 @@ export default function SiteShell({
       </a>
       {authBypassed ? (
         <p className="auth-bypass-banner" role="status">
-          Auth is disabled for local development (AUTH_DISABLED=true). Remove
-          it from .env.local to restore the sign-in gate.
+          Auth is disabled for local development (AUTH_DISABLED=true). Remove it
+          from .env.local to restore the sign-in gate.
         </p>
       ) : null}
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="FormChain home">
-          <span>FORM</span>CHAIN
+        <Link className="wordmark" href="/" aria-label="Spotter home">
+          <span>SPOT</span>TER
         </Link>
         <nav aria-label="Primary navigation">
           {navigation.map(({ href, label }) => {
@@ -73,9 +83,16 @@ export default function SiteShell({
           )}
         </div>
       </header>
-      <main id="main-content" className="app-main">
-        {children}
-      </main>
+      {needsCompetitions ? (
+        <CompetitionProvider>
+          <div className={isCommunity ? "competition-app-layout" : undefined}>
+            {isCommunity ? <CompetitionPanel /> : null}
+            {content}
+          </div>
+        </CompetitionProvider>
+      ) : (
+        content
+      )}
       <TabTransitionLoader />
       <MobileTabBar />
     </>

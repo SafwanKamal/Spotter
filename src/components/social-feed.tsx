@@ -17,7 +17,7 @@ import {
 } from "@/lib/social";
 import styles from "@/app/(app)/social/social.module.css";
 
-const STORAGE_KEY = "formchain.socialVotes.v1";
+const STORAGE_KEY = "spotter.socialVotes.v1";
 const exercises: Array<"All" | SocialExercise> = [
   "All",
   "Squat",

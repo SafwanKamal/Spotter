@@ -6,8 +6,8 @@
 #   ./services/kimodo/deploy-remote.sh root@HOST -p PORT
 set -euo pipefail
 ROOT="$(CDPATH= cd -- "$(dirname "$0")" && pwd)"
-KEY="${RUNPOD_SSH_KEY:-$HOME/.ssh/id_ed25519_runpod_formchain}"
-REMOTE_DIR="${KIMODO_REMOTE_DIR:-/workspace/formchain-kimodo}"
+KEY="${RUNPOD_SSH_KEY:-$HOME/.ssh/id_ed25519_runpod_spotter}"
+REMOTE_DIR="${KIMODO_REMOTE_DIR:-/workspace/spotter-kimodo}"
 
 if [[ -n "${RUNPOD_SSH:-}" ]]; then
   # shellcheck disable=SC2206
@@ -38,7 +38,7 @@ echo "Restarting Kimodo worker..."
     ./start-services.sh
   else
     pkill -f \"python3 .*worker.py\" || true
-    nohup ./start.sh > /tmp/formchain-kimodo-worker.log 2>&1 &
+    nohup ./start.sh > /tmp/spotter-kimodo-worker.log 2>&1 &
   fi
   sleep 1
   curl -sS -m 5 -H \"Authorization: Bearer \${KIMODO_API_TOKEN}\" http://127.0.0.1:8000/health || true

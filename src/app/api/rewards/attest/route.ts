@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       { error: "Reward attestation is not configured." },
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
-  if (!authorizedRewardIssuer(request.headers.get("x-formchain-issuer-token")))
+  if (!authorizedRewardIssuer(request.headers.get("x-spotter-issuer-token")))
     return Response.json(
       { error: "The reward issuer is not authorized." },
       { status: 401, headers: { "Cache-Control": "no-store" } },

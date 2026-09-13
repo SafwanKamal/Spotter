@@ -37,7 +37,7 @@ test("demo examples award policy points and ignore movement score", async () => 
   assert.equal(jordan.claim.rangeTempoScore, 99);
   const sam = catalog.find((example) => example.athlete === "Sam")!;
   assert.equal(sam.points.verifiedGymTime, 9);
-  assert.match(sam.memo, /^formchain:v1\|sha256=[a-f0-9]{64}\|exercise=squat/);
+  assert.match(sam.memo, /^spotter:v1\|sha256=[a-f0-9]{64}\|exercise=squat/);
   assert.equal(sam.memo.includes("rangeTempoScore"), false);
 });
 

@@ -1,9 +1,9 @@
-# FormChain — Project Proposal
+# Spotter — Project Proposal
 
 **HackWesTX VII · Movement Lab**
 *Your gym clip, reviewed. Every rep, on the record.*
 
-This document is the argument for FormChain: why it matters, why it holds together as one
+This document is the argument for Spotter: why it matters, why it holds together as one
 system rather than a pile of integrations, and why it has a business behind it. It is written
 to be turned into slides — each section is roughly one.
 
@@ -11,7 +11,7 @@ to be turned into slides — each section is roughly one.
 
 ## 1. The one-sentence pitch
 
-**FormChain turns a phone video of your set into reviewable evidence of how you actually
+**Spotter turns a phone video of your set into reviewable evidence of how you actually
 moved — measured on your own device, explained in plain language, replayed in 3D, and
 recorded as a participation record a gym or sponsor can verify without ever seeing your
 footage.**
@@ -39,13 +39,13 @@ So the gap is not motivation and it is not tracking. Both are solved markets. Th
 and here is the frame where it changed," there is no product that a normal person can use for
 free, in a gym, in ten seconds, without uploading a video of their body to a stranger's server.
 
-That is the gap FormChain fills.
+That is the gap Spotter fills.
 
 ---
 
 ## 3. The product
 
-Open the app. Point a camera, or drop in a clip. FormChain:
+Open the app. Point a camera, or drop in a clip. Spotter:
 
 1. **Recognizes the exercise.** Squat, push-up, lunge, deadlift, or plank — classified from
    the landmark sequence itself, with the user always able to correct it.
@@ -71,7 +71,7 @@ Five destinations, one loop: **Analyze → Replay → Community → Profile → 
 
 This is the part most hackathon projects cannot claim, and it is our strongest card.
 
-FormChain is not five APIs in a trench coat. It is one spine — **measure, interpret, narrate,
+Spotter is not five APIs in a trench coat. It is one spine — **measure, interpret, narrate,
 replay, settle** — governed by a single rule:
 
 > **Each layer may only claim what the layer beneath it can prove.**
@@ -118,7 +118,7 @@ This produces a rare property for an AI product: **marginal cost per analysis is
 zero.** Inference runs on the user's phone. Cloud spend is opt-in and capped by construction.
 Most AI fitness companies have COGS that scale linearly with engagement — the more their users
 love the product, the more it costs them. Ours doesn't. That is a durable structural advantage,
-and it is also the compliance story that lets FormChain operate where biometric video of
+and it is also the compliance story that lets Spotter operate where biometric video of
 minors, gym members, and clinic patients is involved.
 
 ### Four customers, one engine
@@ -130,11 +130,11 @@ minors, gym members, and clinic patients is involved.
 | **The trainer** | A community feed with ranked expertise and AI-annotated examples | Distribution and credibility — a channel to reach members between sessions |
 | **The sponsor / insurer** | A verifiable "this person trained" record with no video attached | They already pay for participation. Today they cannot verify it without trusting a self-report |
 
-### Why there is a chain in FormChain
+### Why there is a chain behind Spotter
 
 The rewards layer is not crypto garnish — it is the business model's settlement rail.
 
-The valuable asset FormChain produces is a **portable, verifiable participation record**. A
+The valuable asset Spotter produces is a **portable, verifiable participation record**. A
 gym, a sponsor-funded challenge, or a corporate wellness program needs to confirm that a
 session happened, without trusting the app vendor and without receiving the member's video.
 A hashed on-chain claim does exactly that: the public memo carries a SHA-256 digest, the
@@ -147,7 +147,7 @@ someone else. Points are capped, score-independent, and rate-limited by a daily 
 
 ### The competitive position
 
-| | Rep counters (Strong, Hevy) | Cloud form-check apps | Personal trainer | **FormChain** |
+| | Rep counters (Strong, Hevy) | Cloud form-check apps | Personal trainer | **Spotter** |
 | --- | --- | --- | --- | --- |
 | Observes actual movement | ✗ | ✓ | ✓ | ✓ |
 | Video stays on device | n/a | ✗ | ✓ | ✓ |
@@ -268,7 +268,7 @@ one of those is named in the product itself — which is the point.
 ## 10. The closing line
 
 Fitness software has spent a decade getting very good at counting what you told it you did.
-FormChain is built on the opposite premise: **measure what actually happened, say only what you
+Spotter is built on the opposite premise: **measure what actually happened, say only what you
 can prove, and make that proof portable.**
 
 That is a better product. It is also, in a market of 540 million users and confident guesses,

@@ -2,7 +2,7 @@
 
 ## Decision
 
-Keep MediaPipe Pose Landmarker **Lite** as FormChain's default browser model.
+Keep MediaPipe Pose Landmarker **Lite** as Spotter's default browser model.
 On the supplied front-squat clip, Lite was the fastest tested model, retained
 100% usable-landmark coverage, detected all five repetitions, and produced the
 closest bottom timestamps to the manually reviewed reference.

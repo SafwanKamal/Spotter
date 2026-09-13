@@ -4,7 +4,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("sign-in and sign-up start Auth0 Universal Login", async ({ page }) => {
   await page.goto("/sign-in");
   await expect(
-    page.getByRole("heading", { name: "Sign in to FormChain" }),
+    page.getByRole("heading", { name: "Sign in to Spotter" }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Continue with Auth0" }),
@@ -16,7 +16,7 @@ test("sign-in and sign-up start Auth0 Universal Login", async ({ page }) => {
 
   await page.goto("/sign-up");
   await expect(
-    page.getByRole("heading", { name: "Create your FormChain account" }),
+    page.getByRole("heading", { name: "Create your Spotter account" }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Sign up with Auth0" }),

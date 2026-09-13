@@ -1,6 +1,6 @@
 ## Canonical repository
 
-The user owns https://github.com/SafwanKamal/FormChain.git. This is the canonical repository for all future work. Use it as `origin`; do not push to the former Mack-Kabir/HackWestx_26 repository. The local checkout remains `/Users/safwankamal/Documents/HackwestTX`.
+The user owns https://github.com/SafwanKamal/Spotter.git. This is the canonical repository for all future work. Use it as `origin`; do not push to the former Mack-Kabir/HackWestx_26 and SafwanKamal/FormChain repositories. The local checkout remains `/Users/safwankamal/Documents/HackwestTX`.
 
 ## Project continuity
 

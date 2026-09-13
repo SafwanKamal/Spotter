@@ -21,7 +21,7 @@ import {
 
 /** Demo-only HMAC secret so examples run without production reward env vars. */
 export const REWARD_DEMO_ATTESTATION_SECRET =
-  "formchain-demo-attestation-secret-v1-not-production";
+  "spotter-demo-attestation-secret-v1-not-production";
 
 const alexAnalysis = analyzeSquats(demoFrames(), 1000, 1000, 12, "video");
 
@@ -72,7 +72,7 @@ function gymVisitFor(minutes: number, nowMs: number, visitId: string) {
   if (minutes <= 0) return undefined;
   const durationMs = minutes * 60_000;
   return {
-    version: "formchain.gym-visit.v1" as const,
+    version: "spotter.gym-visit.v1" as const,
     visitId,
     gymId: "hackwestx-demo-gym",
     method: "rotating-gym-qr" as const,
@@ -120,7 +120,7 @@ export type RewardDemoRunItem = RewardDemoCatalogItem & {
 
 export type RewardDemoExecution = {
   kind: "execution";
-  policyVersion: "formchain.rewards.v1";
+  policyVersion: "spotter.rewards.v1";
   storage: "ephemeral-demo";
   examples: RewardDemoRunItem[];
   leaderboard: {
@@ -163,7 +163,7 @@ async function redeemExample(
       claim: example.claim,
       claimDigest,
       evidence: {
-        version: "formchain.evidence.v1",
+        version: "spotter.evidence.v1",
         evidenceId: crypto.randomUUID(),
         source: "trusted-analysis-service",
         observedAtMs: nowMs - 1_000,
@@ -251,7 +251,7 @@ export async function runRewardDemo(options?: {
   );
   return {
     kind: "execution",
-    policyVersion: "formchain.rewards.v1",
+    policyVersion: "spotter.rewards.v1",
     storage: "ephemeral-demo",
     examples: executed.map(({ item }) => item),
     leaderboard: ledger.listBalances().map((entry, index) => ({

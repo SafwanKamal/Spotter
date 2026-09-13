@@ -8,7 +8,7 @@ type AuthMode = "login" | "signup";
 const copy = {
   login: {
     eyebrow: "WELCOME BACK",
-    title: "Sign in to FormChain",
+    title: "Sign in to Spotter",
     subtitle:
       "Sign in to open your movement lab. Your workout video is analysed on this device and never uploaded.",
     action: "Continue with Auth0",
@@ -18,7 +18,7 @@ const copy = {
   },
   signup: {
     eyebrow: "GET STARTED",
-    title: "Create your FormChain account",
+    title: "Create your Spotter account",
     subtitle:
       "You’ll finish creating the account with Auth0. Your workout video is still analysed on this device and never uploaded.",
     action: "Sign up with Auth0",
@@ -90,7 +90,7 @@ export function AuthStart({
                 Signed in as {authDisplayName(user)}.
               </p>
               <ButtonLink href="/" variant="primary" className={styles.submit}>
-                Continue to FormChain
+                Continue to Spotter
               </ButtonLink>
               <p className={styles.footNote}>
                 <a href="/auth/logout">Sign out</a>

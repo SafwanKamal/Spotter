@@ -18,7 +18,7 @@ const walletAddressSchema = z.string().refine(isAddress, "Invalid wallet address
 
 export const verifiedGymVisitSchema = z
   .object({
-    version: z.literal("formchain.gym-visit.v1"),
+    version: z.literal("spotter.gym-visit.v1"),
     visitId: z.string().uuid(),
     gymId: z.string().trim().min(1).max(80),
     method: z.literal("rotating-gym-qr"),
@@ -38,7 +38,7 @@ export const rewardIssueInputSchema = z.object({
   claim: workoutClaimSchema,
   claimDigest: digestSchema,
   evidence: z.object({
-    version: z.literal("formchain.evidence.v1"),
+    version: z.literal("spotter.evidence.v1"),
     evidenceId: z.string().uuid(),
     source: z.literal("trusted-analysis-service"),
     observedAtMs: z.number().int().nonnegative(),
@@ -56,9 +56,9 @@ export const rewardBreakdownSchema = z.object({
 });
 
 export const rewardAttestationPayloadSchema = z.object({
-  version: z.literal("formchain.reward-attestation.v1"),
+  version: z.literal("spotter.reward-attestation.v1"),
   attestationId: z.string().uuid(),
-  policyVersion: z.literal("formchain.rewards.v1"),
+  policyVersion: z.literal("spotter.rewards.v1"),
   walletAddress: walletAddressSchema,
   claimDigest: digestSchema,
   evidenceId: z.string().uuid(),
@@ -97,7 +97,7 @@ export const rewardRedemptionRequestSchema = z.object({
 export type RewardReceipt = {
   attestationId: string;
   walletAddress: string;
-  policyVersion: "formchain.rewards.v1";
+  policyVersion: "spotter.rewards.v1";
   awardedPoints: number;
   balance: number;
   redeemedAtMs: number;
@@ -214,9 +214,9 @@ export async function issueRewardAttestation(
       )
     : 0;
   const payload = rewardAttestationPayloadSchema.parse({
-    version: "formchain.reward-attestation.v1",
+    version: "spotter.reward-attestation.v1",
     attestationId: crypto.randomUUID(),
-    policyVersion: "formchain.rewards.v1",
+    policyVersion: "spotter.rewards.v1",
     walletAddress: input.walletAddress,
     claimDigest: input.claimDigest,
     evidenceId: input.evidence.evidenceId,
@@ -279,7 +279,7 @@ export function createRewardRedemptionMessage(
   const checked = rewardAttestationPayloadSchema.parse(payload);
   return textEncoder.encode(
     [
-      "formchain:redeem:v1",
+      "spotter:redeem:v1",
       "attestation_id=" + checked.attestationId,
       "claim_sha256=" + checked.claimDigest,
     ].join("|"),

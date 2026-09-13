@@ -193,8 +193,8 @@ export function buildKimodoMeta(spec: MotionSpec, duration: number) {
       text_weight: 2.0,
       constraint_weight: 2.0,
     },
-    // FormChain metadata — ignored by Kimodo, useful for cache/debug.
-    formchain: {
+    // Spotter metadata — ignored by Kimodo, useful for cache/debug.
+    spotter: {
       name: spec.name,
       style: spec.style,
       startingPose: spec.startingPose,

@@ -13,7 +13,7 @@ export default function RewardsWorkspace() {
     let active = true;
     queueMicrotask(() => {
       try {
-        const raw = sessionStorage.getItem("formchain.rewardSession.v1");
+        const raw = sessionStorage.getItem("spotter.rewardSession.v1");
         if (raw && active) {
           const value = JSON.parse(raw);
           if (

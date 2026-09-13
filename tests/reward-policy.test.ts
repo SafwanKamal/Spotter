@@ -20,7 +20,7 @@ import {
   hashWorkoutClaim,
 } from "../src/lib/workout-proof";
 
-const secret = "test-only-formchain-attestation-secret-0001";
+const secret = "test-only-spotter-attestation-secret-0001";
 const now = Date.UTC(2026, 8, 12, 20, 0, 0);
 const analysis = analyzeSquats(demoFrames(), 1000, 1000, 12, "video");
 
@@ -36,14 +36,14 @@ async function fixture(options?: { gymVisit?: boolean; score?: number }) {
     claim,
     claimDigest: await hashWorkoutClaim(claim),
     evidence: {
-      version: "formchain.evidence.v1" as const,
+      version: "spotter.evidence.v1" as const,
       evidenceId: crypto.randomUUID(),
       source: "trusted-analysis-service" as const,
       observedAtMs: now - 1_000,
     },
     gymVisit: options?.gymVisit
       ? {
-          version: "formchain.gym-visit.v1" as const,
+          version: "spotter.gym-visit.v1" as const,
           visitId: crypto.randomUUID(),
           gymId: "hackwestx-demo-gym",
           method: "rotating-gym-qr" as const,

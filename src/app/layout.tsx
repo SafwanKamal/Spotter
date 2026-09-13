@@ -19,7 +19,7 @@ const publicSans = Public_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "FormChain — Move with intention",
+  title: "Spotter — Move with intention",
   description: "A movement lab for reviewing squat repetitions, keyframes, and coaching cues.",
 };
 

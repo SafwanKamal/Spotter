@@ -192,7 +192,7 @@ export default function LiveCameraCoach({ exercise }: { exercise: ExerciseId }) 
     if (state !== "stopped" || !analysis) return;
     try {
       sessionStorage.setItem(
-        "formchain.rewardSession.v1",
+        "spotter.rewardSession.v1",
         JSON.stringify({
           source: analysis.source,
           exercise: analysis.exercise,
@@ -296,7 +296,7 @@ export default function LiveCameraCoach({ exercise }: { exercise: ExerciseId }) 
       startTimeRef.current = performance.now();
       lastDetectionRef.current = 0;
       try {
-        sessionStorage.removeItem("formchain.rewardSession.v1");
+        sessionStorage.removeItem("spotter.rewardSession.v1");
       } catch {
         // A previous live session can still be claimed from Rewards.
       }

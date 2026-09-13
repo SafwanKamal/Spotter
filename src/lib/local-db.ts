@@ -4,7 +4,7 @@
 // (save / update / list / get) so it can later point at a real database
 // service (e.g. Tiger) without changing any caller.
 
-const DB_NAME = "formchain";
+const DB_NAME = "spotter";
 const DB_VERSION = 1;
 const STORE = "sessions";
 

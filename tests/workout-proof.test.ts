@@ -31,7 +31,7 @@ const analysis = analyzeSquats(demoFrames(), 1000, 1000, 12, "video");
 test("workout claims contain bounded summary data without frames or landmarks", () => {
   const claim = createWorkoutClaim(analysis);
   assert.deepEqual(claim, {
-    version: "formchain.workout.v1",
+    version: "spotter.workout.v1",
     analysisVersion: 2,
     detectionAlgorithm: "relative-excursion-v2",
     exercise: "squat",
@@ -99,7 +99,7 @@ test("the workout memo signs and executes in a local Solana validator", async ()
 });
 
 test("a Solana CLI keypair file can sign the same workout memo locally", async () => {
-  const directory = await mkdtemp(path.join(os.tmpdir(), "formchain-keypair-"));
+  const directory = await mkdtemp(path.join(os.tmpdir(), "spotter-keypair-"));
   const keypairPath = path.join(directory, "wallet.json");
   const keyPair = await generateKeyPair(true);
   await writeKeyPair(keyPair, keypairPath);

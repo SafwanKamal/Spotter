@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SocialFeed from "@/components/social-feed";
 
 export const metadata: Metadata = {
-  title: "Community — FormChain",
+  title: "Community — Spotter",
   description:
     "A prototype community feed for trainer-led exercise tips and transparent AI movement observations.",
 };

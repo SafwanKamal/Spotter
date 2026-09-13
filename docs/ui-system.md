@@ -1,10 +1,10 @@
 # UI editing guide
 
-Start here when changing FormChain's appearance. Preserve the route responsibilities and privacy decisions in `.codex/PROJECT_LEDGER.md`.
+Start here when changing Spotter's appearance. Preserve the route responsibilities and privacy decisions in `.codex/PROJECT_LEDGER.md`.
 
 ## The design language (read this first)
 
-FormChain is **one product surface with one visual language**. Before adding
+Spotter is **one product surface with one visual language**. Before adding
 anything, find the existing pattern — a new recipe is almost always the wrong
 answer, and it is how the app ended up with five card styles, three selects and
 thirty-one font sizes.
@@ -12,7 +12,7 @@ thirty-one font sizes.
 **Type.** Sans (`--font-body`) for everything you can read as language:
 headings, labels, body, buttons. Serif (`--font-display`) is the *numeral and
 wordmark* face only — rep counts, angles, durations, leaderboard ranks, the
-FORMCHAIN mark. A serif sentence is a bug.
+SPOTTER mark. A serif sentence is a bug.
 
 **The scale.** Use the named steps, not the legacy pixel aliases:
 `--text-2xs | xs | sm | base | md | lg | xl | 2xl` and `--display-1 | -2`.
@@ -101,3 +101,5 @@ SVG uses CSS variables directly. Three.js resolves the replay tokens from the vi
 Run `npm test`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, and `PLAYWRIGHT_CHANNEL=chrome npm run test:e2e`. The UI-system browser checks cover all six content routes at desktop/mobile sizes, accessibility, overflow and global token propagation into scoped Community styles and SVG overlays. Existing tests exercise profile persistence, analysis buttons/file refs, local voting, replay and nested rewards. The private real-clip test requires `SQUAT_CLIP`.
 
 Review the generated `test-results/ui-*.png` screenshots when making visual changes. Summarize changed theme roles/components and validation in the project ledger. Keep route state, scoring and backend contracts separate from presentation changes.
+
+Competition UI: `competition-provider.tsx` shares the fresh directory/chain snapshot; `competition-panel.tsx` owns the Community-only responsive rail; `competition-workspace.tsx` shows standings and prize distribution. Wallet code loads only on the detail route. Competition layout consumes existing tokens and Card/Button/Select primitives; directory and on-chain boundaries are documented in `docs/competitions.md`.

@@ -1,7 +1,7 @@
 import type { JointCoachReview } from "./joint-coach";
 import { jointCoachSchema } from "./joint-coach";
 
-const STORAGE_KEY = "formchain.jointCoach.v1";
+const STORAGE_KEY = "spotter.jointCoach.v1";
 
 export function writeJointCoachReview(review: JointCoachReview) {
   if (typeof sessionStorage === "undefined") return;

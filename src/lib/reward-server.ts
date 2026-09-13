@@ -3,7 +3,7 @@ import "server-only";
 import { timingSafeEqual } from "node:crypto";
 import { RewardLedger } from "./reward-policy";
 
-const rewardLedgerKey = Symbol.for("formchain.reward-ledger.v1");
+const rewardLedgerKey = Symbol.for("spotter.reward-ledger.v1");
 type RewardGlobal = typeof globalThis & {
   [rewardLedgerKey]?: RewardLedger;
 };

@@ -4,7 +4,7 @@ import { auth0 } from "@/lib/auth0";
 import { toPublicAuthUser } from "@/lib/auth-user";
 
 export const metadata: Metadata = {
-  title: "Sign in — FormChain",
+  title: "Sign in — Spotter",
 };
 
 export default async function SignInPage() {

@@ -7,10 +7,10 @@ import {
 
 /** Local-only fictional roster used to exercise ranking, search, and history. */
 export const DEMO_VIEWER_ID = "dev|auth-disabled";
-export const DEMO_E2E_ID = "auth0|formchain-e2e";
+export const DEMO_E2E_ID = "auth0|spotter-e2e";
 
-export const SESSION_HISTORY_STORAGE_KEY = "formchain.sessionHistory.v1";
-export const PROFILE_STORAGE_KEY = "formchain.profile.v1";
+export const SESSION_HISTORY_STORAGE_KEY = "spotter.sessionHistory.v1";
+export const PROFILE_STORAGE_KEY = "spotter.profile.v1";
 
 export type DemoAthlete = { id: string; name: string };
 

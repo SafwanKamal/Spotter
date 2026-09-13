@@ -13,8 +13,8 @@ import type { Analysis } from "@/lib/analysis";
 import type { ExerciseId } from "@/lib/exercises/types";
 import { saveSessionRecord } from "@/lib/local-db";
 
-const STORAGE_KEY = "formchain.latestAnalysis.v1";
-export const HISTORY_STORAGE_KEY = "formchain.sessionHistory.v1";
+const STORAGE_KEY = "spotter.latestAnalysis.v1";
+export const HISTORY_STORAGE_KEY = "spotter.sessionHistory.v1";
 const HISTORY_LIMIT = 30;
 const HISTORY_EXERCISES = new Set<ExerciseId>([
   "squat",

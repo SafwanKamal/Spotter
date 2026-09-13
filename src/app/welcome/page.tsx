@@ -6,9 +6,9 @@ import { toPublicAuthUser } from "@/lib/auth-user";
 import styles from "./welcome.module.css";
 
 export const metadata: Metadata = {
-  title: "FormChain — See your form the way a coach would",
+  title: "Spotter — See your form the way a coach would",
   description:
-    "FormChain reviews your reps on your own device, reflects them back in plain language, and lets you carry the receipts if you want.",
+    "Spotter reviews your reps on your own device, reflects them back in plain language, and lets you carry the receipts if you want.",
 };
 
 /**
@@ -42,7 +42,7 @@ export default async function WelcomePage() {
             </>
           )}
           <ButtonLink href={user ? "/" : "/sign-up"} variant="primary">
-            {user ? "Open FormChain" : "Get started"}
+            {user ? "Open Spotter" : "Get started"}
           </ButtonLink>
         </div>
       </nav>
@@ -55,13 +55,13 @@ export default async function WelcomePage() {
               See your form the way a coach would.
             </h1>
             <p className={styles.heroBody}>
-              FormChain reviews your reps on your own device, reflects them
+              Spotter reviews your reps on your own device, reflects them
               back in plain language, and — if you want — lets you carry the
               receipts.
             </p>
             <div className={styles.heroActions}>
               <ButtonLink href={user ? "/" : "/sign-up"} variant="primary">
-                {user ? "Open FormChain" : "Get started free"}
+                {user ? "Open Spotter" : "Get started free"}
               </ButtonLink>
               {user ? (
                 <Link href="/profile" className={styles.navSignIn}>
@@ -175,7 +175,7 @@ export default async function WelcomePage() {
             <h3 className={styles.featureTitle}>Own your progress</h3>
             <p className={styles.featureBody}>
               Optional, verifiable workout receipts you control — never
-              required to use FormChain.
+              required to use Spotter.
             </p>
           </div>
         </section>

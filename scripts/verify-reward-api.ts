@@ -39,14 +39,14 @@ async function main() {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-formchain-issuer-token": authorizedIssuerToken,
+      "x-spotter-issuer-token": authorizedIssuerToken,
     },
     body: JSON.stringify({
       walletAddress,
       claim,
       claimDigest: await hashWorkoutClaim(claim),
       evidence: {
-        version: "formchain.evidence.v1",
+        version: "spotter.evidence.v1",
         evidenceId: crypto.randomUUID(),
         source: "trusted-analysis-service",
         observedAtMs: now,

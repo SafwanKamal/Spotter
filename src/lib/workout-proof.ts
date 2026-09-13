@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { Analysis } from "./analysis";
 
 export const workoutClaimSchema = z.object({
-  version: z.literal("formchain.workout.v1"),
+  version: z.literal("spotter.workout.v1"),
   analysisVersion: z.literal(2),
   detectionAlgorithm: z.literal("relative-excursion-v2"),
   exercise: z.literal("squat"),
@@ -17,7 +17,7 @@ export type WorkoutClaim = z.infer<typeof workoutClaimSchema>;
 
 export function createWorkoutClaim(analysis: Analysis): WorkoutClaim {
   return workoutClaimSchema.parse({
-    version: "formchain.workout.v1",
+    version: "spotter.workout.v1",
     analysisVersion: analysis.version,
     detectionAlgorithm: analysis.detection.algorithm,
     exercise: analysis.exercise,
@@ -46,7 +46,7 @@ export function createWorkoutMemo(claim: WorkoutClaim, digest: string): string {
   const checked = workoutClaimSchema.parse(claim);
   if (!/^[a-f0-9]{64}$/.test(digest)) throw new Error("Invalid claim digest.");
   const memo = [
-    "formchain:v1",
+    "spotter:v1",
     "sha256=" + digest,
     "exercise=" + checked.exercise,
     "reps=" + checked.repetitions,
