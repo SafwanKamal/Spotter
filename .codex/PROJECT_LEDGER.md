@@ -9,12 +9,12 @@ Canonical repository: **https://github.com/SafwanKamal/Spotter.git** (user-owned
 | Project goal               | Build a hackathon prototype that reviews gym exercise video, teaches through a trainer community, replays motion, and records optional Solana receipts.                                                             |
 | Current phase              | Local-first multi-route MVP (Analyze / Replay / Community / Profile; rewards nested under Profile) with automatic five-exercise upload analysis, live camera coaching, and ElevenLabs spoken cues. Theme redesign may still be concurrent. |
 | Branch / commit | `main` at `98a45d78b8d26cbb427ffc0398e9445476d3aef5` after concurrent repository migration; canonical origin retained. Earlier competition core is in the migrated snapshot; finishing competition/UI changes and unrelated branding work remain uncommitted. This task made no commit/push. |
-| Active primary sub-problem | SP-004 — competition sidebar and devnet prize-pool flow implemented; production trust remains separate |
-| Last validated milestone | Three pools funded with 0.031 devnet SOL total; lunge demo finalized and 0.001 SOL paid 50/30/20 to three wallets. Deployed binary equals LiteSVM-tested binary. 81 unit tests, five focused Chrome checks, TypeScript and production build pass. |
+| Active primary sub-problem | SP-009 — Replay/joint-coach voice length; related SP-004 competition |
+| Last validated milestone | Spoken coach text was hard-capped at 300 chars and cut mid-phrase at “to the”. Raised `SPEAK_TEXT_MAX` to 900 and truncate on sentence boundaries. User’s 355-char squat summary now speaks through “drop together.” |
 | Current blocker or risk | Gym directory/athletes are fictional operator-managed demos; no external gym feed or automatic reviewed enrollment. Human wallet-extension approval untested. Upgradeable devnet program has no refund path. Global suite has ten stale-UI failures and Replay lint errors. |
 | Exact next action | Competition sidebar now sits on the left, only in Community (`/social` and nested routes); detail pages remain accessible without it. Continue the documented real-directory/wallet rehearsal handoffs. |
 | Most relevant prior chat | [Competition implementation](codex://threads/01a09afb-3cb2-7d02-9449-3675086fd790) |
-| Ledger updated | 2026-09-13T09:54:21-05:00 |
+| Ledger updated | 2026-09-13T10:12:00-05:00 |
 
 ## Status Legend
 
@@ -787,3 +787,30 @@ Use `$maintain-project-ledger`. Read `.codex/PROJECT_LEDGER.md`, starting with `
 - Unified Community header/content width through `--page-wide-max`. Existing balanced outer grid gutters retained. Removed the mobile Community content's extra width cap so header, event disclosure and feed have matching horizontal padding.
 - Browser evidence: at 1440px, both content edges and header gutters are 44px; at the normal 590px viewport all three surfaces have 23.6px padding and no extra side margins. No horizontal overflow at either width. TypeScript and focused shell lint pass.
 - User authorized committing/pushing all current project changes. Commit follows this ledger entry; no transaction or funding changes.
+
+### Authentication re-enabled — 2026-09-13T09:57:50-05:00
+
+- User requested auth restored. Set `AUTH_DISABLED=false` in gitignored `.env.local`; existing Auth0 credentials and implementation preserved. Branch `main` at `4d800d537a28352dd00b70154e45769a4e253d6c`.
+- Verified the running dev server redirects a signed-out `/analyze` request to `/welcome` (307), and rejects unauthenticated reward claims (401). This restores normal session checks and removes the Dev Mode stand-in. No external login credentials entered or changed.
+- Local configuration change only; no deployment/configuration change to hosted environments.
+
+### Remaining Spotter wordmarks and auth restoration — 2026-09-13T10:00:55-05:00
+
+- User requested auth temporarily disabled, remaining FormChain branding fixed, then auth restored. Primary SP-006; `main` at `4d800d537a28352dd00b70154e45769a4e253d6c`; uncommitted branding/ledger changes, no commit/push.
+- Replaced split `<span>FORM</span>CHAIN` markup on welcome, auth-start (sign-in/sign-up), and tab-transition overlay with SPOT/TER. Existing public metadata already used Spotter. Historical repository references and deployed Solana binary filenames remain technical identifiers, not UI branding.
+- Verified welcome and sign-in rendered SPOTTER in the browser. No remaining FORM/CHAIN/FormChain matches in src/public. Focused ESLint, TypeScript, and diff whitespace checks pass.
+- Restored `AUTH_DISABLED=false` in gitignored `.env.local`. Running app again redirects unauthenticated Analyze to welcome (307) and rejects unauthenticated reward claims (401). Existing Auth0 credentials untouched.
+
+### Joint-coach speech mid-phrase cut — 2026-09-13T10:12:00-05:00
+
+- Primary SP-009; related SP-002. Session ID/link unavailable from current surface. Branch `main` at `98a45d78b8d26cbb427ffc0398e9445476d3aef5` plus uncommitted work; no commit or push.
+- Cause: `SPEAK_TEXT_MAX` was 300. The user’s squat summary is 355 characters, so `jointCoachSpeechText` sliced at “anchored to the”.
+- Fix: raised the speak/API ceiling to 900 (matching joint-coach summary max) and added `boundSpokenText` so forced cuts end on a sentence.
+- Validation: `tests/coach-voice.test.ts` + kinematics/replay-coach 15/15, including a regression with the exact cut summary. Full suite not rerun.
+
+- 2026-09-13T10:12:00-05:00 — SP-009: stop clipping Replay/joint coach speech mid-phrase.
+
+### Publish latest fixes — 2026-09-13T10:16:03-05:00
+
+- User authorized uploading all pending project changes to canonical `origin` (`https://github.com/SafwanKamal/Spotter.git`), branch `main`, base `4d800d5`. Includes corrected Spotter wordmarks and concurrent coaching-speech length/sentence-boundary fixes.
+- Reviewed changed files; focused coach-voice tests pass 9/9 and diff whitespace checks pass. Prior branding lint/TypeScript and restored-auth checks are recorded above. Private `.env.local` remains excluded; auth remains enabled locally. Commit and push follow this entry.

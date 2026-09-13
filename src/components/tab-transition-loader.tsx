@@ -181,7 +181,7 @@ export default function TabTransitionLoader() {
           <TabIcon tab={tab} />
         </div>
         <p className="tab-transition-word">
-          <span>FORM</span>CHAIN
+          <span>SPOT</span>TER
         </p>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SPEAK_TEXT_MAX } from "./coach-voice";
+import { boundSpokenText } from "./coach-voice";
 import { formPlaybook } from "./form-playbooks";
 import type { KinematicBrief } from "./kinematics";
 
@@ -147,10 +147,9 @@ export function fallbackJointCoach(brief: KinematicBrief): JointCoachReview {
 export function jointCoachSpeechText(review: JointCoachReview) {
   const first = review.attention[0];
   const follow = first ? `${first.why} ${first.cue}`.trim() : "";
-  return [review.summary.trim(), follow]
-    .filter(Boolean)
-    .join(" ")
-    .slice(0, SPEAK_TEXT_MAX);
+  return boundSpokenText(
+    [review.summary.trim(), follow].filter(Boolean).join(" "),
+  );
 }
 
 export function jointCoachModels() {

@@ -4,7 +4,9 @@
 
 export const PREVIEW_COACH_CUE = "Rep 1. Good depth that rep.";
 export const MAX_LIVE_VOICE_QUEUE = 2;
-export const SPEAK_TEXT_MAX = 300;
+// Joint-coach summaries may reach 900 characters. Keep the API and spoken
+// scripts on the same ceiling so a review is not clipped mid-phrase.
+export const SPEAK_TEXT_MAX = 900;
 
 export function enqueueLiveCue(queue: string[], text: string): string[] {
   const next = text.trim();
@@ -15,6 +17,21 @@ export function enqueueLiveCue(queue: string[], text: string): string[] {
     : combined.slice(combined.length - MAX_LIVE_VOICE_QUEUE);
 }
 
+/** Prefer a complete sentence over a hard character cut. */
+export function boundSpokenText(text: string, max = SPEAK_TEXT_MAX): string {
+  const next = text.trim();
+  if (next.length <= max) return next;
+  const cut = next.slice(0, max);
+  const sentence = cut.match(/^[\s\S]*[.?!](?=\s|$)/);
+  if (sentence) {
+    const complete = sentence[0].trim();
+    // Keep any finished sentence; only reject near-empty leftovers.
+    if (complete.length >= 12) return complete;
+  }
+  const words = cut.replace(/\s+\S*$/, "").trim();
+  return words.length >= 24 ? `${words}.` : cut.trim();
+}
+
 export function coachingSpeechText(review: {
   summary: string;
   cues: Array<{ observation: string; suggestion: string }>;
@@ -23,10 +40,9 @@ export function coachingSpeechText(review: {
   const followUp = first
     ? `${first.observation} ${first.suggestion}`.trim()
     : "";
-  return [review.summary.trim(), followUp]
-    .filter(Boolean)
-    .join(" ")
-    .slice(0, SPEAK_TEXT_MAX);
+  return boundSpokenText(
+    [review.summary.trim(), followUp].filter(Boolean).join(" "),
+  );
 }
 
 const SPOKEN_EXERCISE: Record<string, string> = {
@@ -107,5 +123,5 @@ export function analysisSpeechText(
 
   const base = parts.join(" ");
   const cue = analysis.cues.find((item) => !GENERIC_ANALYSIS_CUE.test(item));
-  return cue ? appendCue(base, cue) : base.slice(0, SPEAK_TEXT_MAX);
+  return cue ? appendCue(base, cue) : boundSpokenText(base);
 }

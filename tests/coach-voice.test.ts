@@ -3,12 +3,14 @@ import { test } from "node:test";
 
 import {
   analysisSpeechText,
+  boundSpokenText,
   coachingSpeechText,
   enqueueLiveCue,
   MAX_LIVE_VOICE_QUEUE,
   PREVIEW_COACH_CUE,
   SPEAK_TEXT_MAX,
 } from "../src/lib/coach-voice";
+import { jointCoachSpeechText } from "../src/lib/joint-coach";
 import {
   buildElevenLabsSpeechRequest,
   DEFAULT_MODEL_ID,
@@ -80,6 +82,41 @@ test("speak input rejects empty and oversized cue text", () => {
   assert.deepEqual(speakInput.parse({ text: "  Rep 1. Good depth that rep.  " }), {
     text: "Rep 1. Good depth that rep.",
   });
+});
+
+test("joint coach speech keeps a full mid-length summary", () => {
+  const summary =
+    "Your right knee and right hip carried the primary folding action during this squat set. The right wrist and left ankle showed notable extra movement, pointing to some upper-body shift and potential heel instability near the bottom. For your next set, focus on keeping your entire foot anchored to the floor while letting your hips and knees drop together.";
+  assert.ok(summary.length > 300);
+  assert.ok(summary.length <= SPEAK_TEXT_MAX);
+  const spoken = jointCoachSpeechText({
+    summary,
+    movers: [
+      {
+        joint: "right knee",
+        takeaway: "This joint carried a large share of the squat motion.",
+      },
+    ],
+    attention: [
+      {
+        joint: "right ankle",
+        why: "The ankle showed extra travel near the bottom of the squat.",
+        cue: "Keep the whole foot planted as the hips and knees drop together.",
+      },
+    ],
+  });
+  assert.match(spoken, /entire foot anchored to the floor/);
+  assert.match(spoken, /hips and knees drop together/);
+  assert.ok(!/to the$/.test(spoken.trim()));
+  assert.ok(spoken.length <= SPEAK_TEXT_MAX);
+});
+
+test("bound spoken text cuts on a sentence instead of mid phrase", () => {
+  const text =
+    "First sentence stays. Second sentence is long enough that a hard character cut would land inside this clause before the period arrives.";
+  const spoken = boundSpokenText(text, 40);
+  assert.equal(spoken, "First sentence stays.");
+  assert.ok(!/inside this/.test(spoken));
 });
 
 test("ElevenLabs requests stream Flash audio and stay unconfigured without a key", () => {

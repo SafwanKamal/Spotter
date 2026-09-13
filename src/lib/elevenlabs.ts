@@ -12,9 +12,8 @@ export const DEFAULT_VOICE_ID = "nPczCjzI2devNBz1zQrb";
 export const DEFAULT_MODEL_ID = "eleven_flash_v2_5";
 
 export const speakInput = z.object({
-  // Cues are short, locally generated coaching phrases (see
-  // src/lib/exercises/live-cues.ts) — never arbitrary user text, but still
-  // capped generously in case that changes.
+  // Live cues stay short; post-set joint reviews may use the full budget.
+  // Never arbitrary free-form user chat, but still capped for the TTS route.
   text: z.string().trim().min(1).max(SPEAK_TEXT_MAX),
 });
 

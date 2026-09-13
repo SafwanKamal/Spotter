@@ -76,7 +76,7 @@ export function AuthStart({
     <div className={styles.page}>
       <div className={styles.nav}>
         <Link href="/welcome" className={styles.wordmark}>
-          <span>FORM</span>CHAIN
+          <span>SPOT</span>TER
         </Link>
       </div>
 

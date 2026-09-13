@@ -24,7 +24,7 @@ export default async function WelcomePage() {
     <div className={styles.page}>
       <nav className={styles.nav} aria-label="Site">
         <Link href="/welcome" className={styles.wordmark}>
-          <span>FORM</span>CHAIN
+          <span>SPOT</span>TER
         </Link>
         <div className={styles.navActions}>
           {user ? (
